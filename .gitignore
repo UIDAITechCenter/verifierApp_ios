@@ -62,7 +62,7 @@ Pods/
 upload_dsym_results
 
 #Removing xcworkspace
-Pehchan.xcworkspace
+test_jwt.xcworkspace
 
 
 
