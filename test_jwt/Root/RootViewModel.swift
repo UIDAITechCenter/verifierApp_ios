@@ -3,7 +3,6 @@
 //  Pehchan
 //
 //  Created by farees.syed on 06/03/25.
-//  Copyright (c) 2025 Dreamplug. All rights reserved.
 //
 
 import Foundation
@@ -26,7 +25,7 @@ final class RootViewModel: RootViewModelProtocol {
     
     private func startLoginFlow() {
         DispatchQueue.main.async { [weak self] in
-            guard let self else { return }
+            guard self != nil else { return }
         }
     }
     

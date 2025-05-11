@@ -3,7 +3,6 @@
 //  Pehchan
 //
 //  Created by farees.syed on 06/03/25.
-//  Copyright (c) 2025 Dreamplug. All rights reserved.
 //
 
 import Foundation
