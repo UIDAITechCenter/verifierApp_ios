@@ -8,7 +8,7 @@ class VerificationScreenViewController: UIViewController {
     
     private let titleLabel: UILabel = {
         let label = UILabel()
-        label.attributedText = "Your Company".attributed(by: .manropeSemibold20(color: .CustomColors.darkCyan))
+        label.attributedText = "AAI".attributed(by: .manropeSemibold20(color: .CustomColors.darkCyan))
         return label
     }()
 
@@ -209,7 +209,7 @@ class VerificationScreenViewController: UIViewController {
             window.addSubview(activityIndicator)
         }
         
-        NetworkManager.shared.getBitInt(binaryString: binaryString) { result in
+        NetworkManager.shared.getJWT(binaryString: binaryString) { result in
             DispatchQueue.main.async {
                 activityIndicator.stopAnimating()
                 activityIndicator.removeFromSuperview()
@@ -218,7 +218,7 @@ class VerificationScreenViewController: UIViewController {
             let callback = "verifierApp"
             switch result {
             case .success(let response):
-                let customUrl = "pehchaan://in.gov.uidai.pehchan?request=\(response.payload)&callback=\(callback)"
+                let customUrl = "pehchaan://in.gov.uidai.pehchan?request=\(response.token)&callback=\(callback)"
                 guard let encodedUrl = customUrl.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed),
                       let url = URL(string: encodedUrl) else {
                     print("Invalid URL")
@@ -236,6 +236,7 @@ class VerificationScreenViewController: UIViewController {
                     }
                 }
             case .failure(let error):
+                print("error: \(error)")
                 DispatchQueue.main.async {
                     let alert = UIAlertController(title: "Error", message: "Failed to send data: \(error.localizedDescription)", preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "OK", style: .default))
@@ -251,8 +252,10 @@ class VerificationScreenViewController: UIViewController {
         descriptionLabel.isHidden = true
         
         guard let selectiveJwt = url.queryParameters["response"] else { return }
-        print("selectedJWT:\n \(selectedFieldsForVerification) \n\(selectiveJwt)")
-        let (_, disclosures) = splitSDJWT(sdJWT: selectiveJwt)
+        let (jwt, disclosures) = splitSDJWT(sdJWT: selectiveJwt)
+        
+        //MARK: Verify jwt signature here before decoding disclosures
+        
         let decodedDisclosures = decodeDisclosures(disclosures: disclosures)
         stackView.arrangedSubviews.forEach { $0.removeFromSuperview() }
 

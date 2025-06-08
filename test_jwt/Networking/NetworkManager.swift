@@ -7,11 +7,11 @@ class NetworkManager {
     
     private init() {}
     
-    func getBitInt(
+    func getJWT(
         binaryString: String,
         completion: @escaping (Result<xmlResponse, Error>) -> Void
     ) {
-        guard let url = URL(string: "https://pehchaanstage.uidai.gov.in/samvaad/mobile/post") else {
+        guard let url = URL(string: "https://pehchaanstage.uidai.gov.in/samvaad/mobile/v1/post") else {
             completion(.failure(NSError(domain: "Invalid URL", code: 400, userInfo: nil)))
             return
         }
@@ -38,7 +38,6 @@ class NetworkManager {
                completion(.failure(NSError(domain: "No Data", code: 500, userInfo: nil)))
                return
            }
-           
            do {
                let decodedResponse = try JSONDecoder().decode(xmlResponse.self, from: data)
                completion(.success(decodedResponse))

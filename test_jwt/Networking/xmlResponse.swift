@@ -1,6 +1,6 @@
 
 struct xmlResponse: Decodable {
-    let payload: String
+    let token: String
     let generated_timestamp: String
     let expiry_timestamp: String
 }

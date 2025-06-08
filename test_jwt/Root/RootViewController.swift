@@ -16,7 +16,7 @@ final class RootViewController: UIViewController, RootViewProtocol {
     private let viewModel: RootViewModelProtocol
     
     private let appIcon: UIImageView = {
-        let imageView = UIImageView(image: UIImage(named: "yc"))
+        let imageView = UIImageView(image: UIImage(named: "AAI"))
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
@@ -25,7 +25,7 @@ final class RootViewController: UIViewController, RootViewProtocol {
         let label = UILabel()
         label.textColor = .black
         label.textAlignment = .center
-        label.attributedText = "Your Company".attributed(by: .manropeBold22(color: .CustomColors.darkCyan))
+        label.attributedText = "Airports Authority of India".attributed(by: .manropeBold22(color: .CustomColors.darkCyan))
         return label
     }()
     
@@ -134,7 +134,7 @@ final class RootViewController: UIViewController, RootViewProtocol {
             make.height(37.0)
         }
 
-        topLabel.hideOrSetNonEmpty(attributedText: "Your Company".attributed(by: .manropeMedium12(color: .black.withAlphaComponent(0.5))))
+        topLabel.hideOrSetNonEmpty(attributedText: "AAI".attributed(by: .manropeMedium12(color: .black.withAlphaComponent(0.5))))
         loadingContainer.backgroundColor = UIColor.white.withAlphaComponent(0.2)
         loadingContainer.layer.borderColor = UIColor.white.withAlphaComponent(0.3).cgColor
         loadingContainer.layer.borderWidth = 1.0

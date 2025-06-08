@@ -9,7 +9,8 @@
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>verifierApp</string>
+                <string>verifierApp</string>
+				<string>AadhaarCallBack</string>
 			</array>
 		</dict>
 	</array>
